@@ -17,5 +17,5 @@ def read_root():
     return {"message": "Hello from FastAPI!"}
 
 @app.get("/hello")
-def read_root():
-    return {"message": "connection api working"}
+def say_hello():
+    return {"message": "Connection apis working ✅"}
