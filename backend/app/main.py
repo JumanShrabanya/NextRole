@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.db.dbconnect import close_client, connect_and_ping, get_database
 from app.routes.auth import router as auth_router
+from app.routes.career import router as career_router
 from beanie import init_beanie
 from app.models.user import User
 
@@ -32,6 +33,7 @@ app.add_middleware(
 )
 
 app.include_router(auth_router)
+app.include_router(career_router)
 
 @app.get("/")
 def read_root():
