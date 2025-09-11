@@ -6,6 +6,9 @@ from pymongo.errors import DuplicateKeyError
 from app.models.user import User
 from app.schemas.user import UserCreate, UserPublic
 from app.utils.security import hash_password
+from app.utils.security import verify_password
+from app.utils.jwt import create_access_token
+from app.schemas.user import LoginRequest, TokenResponse
 
 
 async def create_user(user_in: UserCreate) -> UserPublic:
@@ -32,6 +35,26 @@ async def create_user(user_in: UserCreate) -> UserPublic:
         email=user.email,
         created_at=user.created_at,
         updated_at=user.updated_at,
+    )
+
+
+async def authenticate_user(credentials: LoginRequest) -> TokenResponse:
+    user = await User.find_one(User.email == credentials.email.lower())
+    if not user:
+        raise ValueError("Invalid email or password")
+    if not verify_password(credentials.password, user.password_hash):
+        raise ValueError("Invalid email or password")
+
+    token = create_access_token(subject=str(user.id))
+    return TokenResponse(
+        access_token=token,
+        user=UserPublic(
+            id=str(user.id),
+            full_name=user.full_name,
+            email=user.email,
+            created_at=user.created_at,
+            updated_at=user.updated_at,
+        ),
     )
 
 
