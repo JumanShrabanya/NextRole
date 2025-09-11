@@ -3,3 +3,7 @@ uvicorn==0.29.0
 sqlalchemy==2.0.23
 pydantic==2.6.4
 python-dotenv==1.0.1
+motor
+passlib[bcrypt]==1.7.4
+email-validator==2.2.0
+beanie==1.26.0
