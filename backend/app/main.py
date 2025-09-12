@@ -11,10 +11,13 @@ from app.models.user import User
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await connect_and_ping()
-    # Initialize Beanie ODM with our models
-    db = get_database()
-    await init_beanie(database=db, document_models=[User])
+    try:
+        await connect_and_ping()
+        db = get_database()
+        await init_beanie(database=db, document_models=[User])
+    except Exception as e:
+        print(f"❌ MongoDB connection failed during startup: {e}")
+        # Optionally: log or raise depending on how critical DB is
     try:
         yield
     finally:
