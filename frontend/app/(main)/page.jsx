@@ -206,7 +206,7 @@ export default function Home() {
             {result && !isLoading && (
               <div className="mt-6 grid gap-4 sm:grid-cols-3 min-w-full">
                 <div className="rounded-xl border border-gray-200 bg-white p-5">
-                  <div className="text-base font-semibold capitalize bg-gradient-to-r from-purple-600 via-fuchsia-500 to-amber-400 bg-clip-text text-transparent">
+                  <div className="text-sm font-semibold capitalize bg-gradient-to-r from-purple-600 via-fuchsia-500 to-amber-400 bg-clip-text text-transparent">
                     Matched roles
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -226,8 +226,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="rounded-xl border border-gray-200 bg-white p-5 sm:col-span-1">
-                  <div className="text-base font-semibold capitalize bg-gradient-to-r from-purple-600 via-fuchsia-500 to-amber-400 bg-clip-text text-transparent">
-                    Required skills
+                  <div className="text-sm font-semibold capitalize bg-gradient-to-r from-purple-600 via-fuchsia-500 to-amber-400 bg-clip-text text-transparent">
+                    Required skills (Additional)
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {result.required_skills.length === 0 && (
@@ -246,7 +246,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="rounded-xl border border-gray-200 bg-white p-5 sm:col-span-1">
-                  <div className="text-base font-semibold capitalize bg-gradient-to-r from-purple-600 via-fuchsia-500 to-amber-400 bg-clip-text text-transparent">
+                  <div className="text-sm font-semibold capitalize bg-gradient-to-r from-purple-600 via-fuchsia-500 to-amber-400 bg-clip-text text-transparent">
                     Companies hiring
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -288,7 +288,7 @@ export default function Home() {
             <div className="rounded-xl border border-gray-200 bg-white p-5">
               <div className="text-sm font-medium">Hiring companies</div>
               <p className="mt-1 text-sm text-gray-600">
-                Up‑to‑date companies that hire for the role.
+                Up-to-date companies that hire for the role.
               </p>
             </div>
           </div>
