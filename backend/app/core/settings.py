@@ -19,7 +19,7 @@ class JwtSettings(BaseModel):
 
 class GeminiSettings(BaseModel):
     api_key: str = os.getenv("GEMINI_API_KEY", "")
-    model: str = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+    model: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-lite")
 
 
 settings = MongoSettings()
