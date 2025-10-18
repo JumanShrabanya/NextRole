@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 from app.db.dbconnect import close_client, connect_and_ping, get_database
 from app.routes.auth import router as auth_router
@@ -27,9 +28,14 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 # CORS
+origins = ["http://localhost:3000"]
+frontend_origin = os.getenv("FRONTEND_ORIGIN")
+if frontend_origin:
+    origins.append(frontend_origin)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Next.js dev server
+    allow_origins=origins,  # Next.js dev server
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
