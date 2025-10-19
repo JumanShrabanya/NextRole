@@ -11,7 +11,7 @@ from app.models.user import User
 app = FastAPI()
 
 # CORS setup
-origins = ["http://localhost:3000"]
+origins = ["http://localhost:3000","https://nextrole-olive.vercel.app"]
 frontend_origin = os.getenv("FRONTEND_ORIGIN")
 if frontend_origin:
     origins.append(frontend_origin)
